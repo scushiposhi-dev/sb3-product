@@ -14,5 +14,4 @@ class Sb3ProductApplicationTests extends MongoDbTestBase{
     void context(){
         assertNotNull(MongoDbTestBase.class);
     }
-
 }
