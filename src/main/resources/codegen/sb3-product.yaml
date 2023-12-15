@@ -1,0 +1,66 @@
+openapi: 3.0.3
+info:
+  title: Product
+  description: Product
+  version: 1.0.0
+
+paths:
+  /v1/product/{productId}:
+    get:
+      tags:
+        - ProductService
+      operationId: getProduct
+      parameters:
+        - in: path
+          name: productId
+          required: true
+          schema:
+            type: integer
+      responses:
+        200:
+          description: product retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+        404:
+          description: product not found
+    delete:
+      tags:
+        - ProductService
+      operationId: deleteProduct
+      parameters:
+        - in: path
+          name: productId
+          required: true
+          schema:
+            type: integer
+      responses:
+        202:
+          description: request accepted
+
+components:
+  schemas:
+    Product:
+      type: object
+      properties:
+        productId:
+          type: integer
+        name:
+          type: string
+        weight:
+          type: integer
+        serviceAddress:
+          type: string
+    HttpErrorInfo:
+      type: object
+      properties:
+        httpStatus:
+          type: string
+        path:
+          type: string
+        message:
+          type: string
+
+
+
