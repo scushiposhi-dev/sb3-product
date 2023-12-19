@@ -10,11 +10,16 @@ spring.data:
     database: product-db
 #      uri: 'mongodb://root:example@localhost:27017/product-db?authSource=admin'
 
-app.eureka-server: localhost
+
+app:
+  eureka-username: user
+  eureka-password: pw
+  eureka-server: localhost
+
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://${app.eureka-server}:8761/eureka/
+      defaultZone: "http://${app.eureka-username}:${app.eureka-password}@${app.eureka-server}:8761/eureka/"
     initialInstanceInfoReplicationIntervalSeconds: 5
     registryFetchIntervalSeconds: 5
   instance:
